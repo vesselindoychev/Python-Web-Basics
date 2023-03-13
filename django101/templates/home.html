@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <button type="button" id="show-btn" onclick="showText()">Show tasks</button>
+    <ul id="task-ul" hidden="hidden">
+        {% if tasks %}
+            {% for t in sorted_tasks %}
+                <li>{{ t.title }} - {{ t.text }}</li>
+
+            {% endfor %}
+        {% else %}
+            <h2>No tasks</h2>
+        {% endif %}
+    </ul>
+
+</body>
+</html>
+
+<script>
+    function showText() {
+        let element = document.getElementById('task-ul');
+        let hidden = element.getAttribute('hidden');
+        let btn = document.getElementById('show-btn')
+        if (hidden) {
+            element.removeAttribute('hidden');
+            btn.innerText = 'Hide tasks';
+        } else {
+            element.setAttribute('hidden', 'hidden');
+            btn.innerText = 'Show tasks';
+        }
+    }
+</script>
