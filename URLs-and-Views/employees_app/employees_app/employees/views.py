@@ -3,6 +3,8 @@ import random
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 
+from employees_app.employees.models import Department, Employee
+
 
 def home(request):
     number = 69
@@ -28,4 +30,8 @@ def department_details(request, id):
 
 
 def list_departments(request):
-    return HttpResponse('This is list departments')
+    context = {
+        'departments': Department.objects.prefetch_related('employee_set').all(),
+        'employees': Employee.objects.all(),
+    }
+    return render(request, 'list_departments.html', context)
