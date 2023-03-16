@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+{% block content %}
 <h1>List of Departments</h1>
 <ul>
     <h3>Departments</h3>
@@ -33,5 +28,4 @@
         <li>{{ employee.first_name }} ({{ employee.department.name }})</li>
     {% endfor %}
 </ul>
-</body>
-</html>
+{% endblock %}

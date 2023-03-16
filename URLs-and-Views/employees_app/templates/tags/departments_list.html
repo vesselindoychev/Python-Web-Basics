@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#    <ul>#}
+{#        {% for department in departments %}#}
+{#            <li>{{ department.name }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Employees</td>
+    </tr>
+    {% for departmetn in departments %}
+        <tr>
+            <td>{{ departmetn.id }}</td>
+            <td>{{ departmetn.name }}</td>
+            <td>{{ departmetn.employee_set.count }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>

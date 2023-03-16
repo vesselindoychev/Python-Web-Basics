@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>This is Home Page</h1>
-<h2>It works</h2>
+{% extends 'base/base.html' %}
+
+{% block content %}
+
 <p>Number: {{ number }}</p>
 <ul>
     <li>Fish</li>
@@ -20,5 +15,5 @@
     {% endfor %}
 
 </ul>
-</body>
-</html>
+
+{% endblock %}

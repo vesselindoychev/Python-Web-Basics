@@ -8,4 +8,5 @@ urlpatterns = [
     path('', home, name='home'),
     path('departments/', include('employees_app.employees.urls')),
     path('redirect-to-home/', redirect_to_home, name='go to home'),
+    path('templates/', include('employees_app.template_examples.urls')),
 ]

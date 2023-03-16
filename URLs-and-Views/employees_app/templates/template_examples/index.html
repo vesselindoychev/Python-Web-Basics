@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load departments_tags %}
+{% load number_filters %}
+{% load string_filters %}
+
+{% block content %}
+
+    <h1>Template Examples Home</h1>
+    <p>{{ title|capitalize }}</p>
+<ul>
+    {% for employee in employees %}
+        <li>{{ employee.first_name }} {{ employee.last_name }} - ({{ employee.job_title }} in {{ employee.department.name }})</li>
+
+    {% endfor %}
+</ul>
+<div>{{ department_names  }}</div>
+<div>
+    <p><strong>{{ number_1|increase_by:200 }}</strong></p>
+</div>
+{% departments_list %}
+{% endblock %}
