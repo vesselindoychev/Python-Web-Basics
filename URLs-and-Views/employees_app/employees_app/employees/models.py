@@ -1,3 +1,4 @@
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 
@@ -59,6 +60,9 @@ class Employee(models.Model):
         max_length=10,
         unique=True,
         verbose_name='EGN',
+        validators=(
+            MinLengthValidator(10),
+        )
     )
 
     job_title = models.CharField(
@@ -79,6 +83,11 @@ class Employee(models.Model):
     department = models.ForeignKey(
         Department,
         on_delete=models.CASCADE,
+    )
+
+    image = models.ImageField(
+        null=True,
+        blank=True,
     )
 
     class Meta:

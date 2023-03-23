@@ -2,18 +2,41 @@
 
 {% block content %}
 
-<p>Number: {{ number }}</p>
-<ul>
-    <li>Fish</li>
-    <li>Pork</li>
-    <li>Beef</li>
-</ul>
-<p>Random Numbers</p>
-<ul>
-    {% for n in numbers %}
-        <li>{{ n }}</li>
-    {% endfor %}
+    <h1>Employees App</h1>
 
-</ul>
+    <h2>Bound (Django) form</h2>
+
+
+    <h2>Unbound (Pure HTML) form</h2>
+    <form>
+
+        <label>Name:<input type="text" required></label>
+
+        <label>Select options:
+            <select>
+                <option>One</option>
+                <option>Two</option>
+                <option>Three</option>
+            </select>
+        </label>
+
+        <label>Email: <input type="email" required></label>
+
+        <label>Age: <input type="number" required></label>
+    </form>
+    <br>
+    <p>Number: {{ number }}</p>
+    <ul>
+        <li>Fish</li>
+        <li>Pork</li>
+        <li>Beef</li>
+    </ul>
+    <p>Random Numbers</p>
+    <ul>
+        {% for n in numbers %}
+            <li>{{ n }}</li>
+        {% endfor %}
+
+    </ul>
 
 {% endblock %}
