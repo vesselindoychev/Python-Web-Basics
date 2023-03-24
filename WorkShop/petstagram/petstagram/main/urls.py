@@ -8,5 +8,6 @@ urlpatterns = [
     path('profile/', show_profile, name='profile'),
     path('photo/details/<int:pk>', show_pet_photo_details, name='pet-photo-details'),
     path('photo/like/<int:pk>/', like_pet_photo, name='like-pet-photo'),
+    # path('unauthorize/profile', show_profile, nam)
 
 ]
