@@ -20,7 +20,7 @@
                             {% if hp %}
                                 <a href="{% url 'dashboard' %}" class="btn btn-lg btn-secondary">Enter</a>
                             {% else %}
-                                <a href="#" class="btn btn-lg btn-secondary">Create Profile</a>
+                                <a href="{% url 'create-profile' %}" class="btn btn-lg btn-secondary">Create Profile</a>
                             {% endif %}
                         </p>
                     </div>

@@ -34,10 +34,10 @@
                 </li>
                 {% if not hide_additional_nav_items %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Pet</a>
+                        <a class="nav-link" href="{% url 'create-pet' %}">Add Pet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Photo</a>
+                        <a class="nav-link" href="{% url 'create-pet-photo' %}">Add Photo</a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
@@ -55,7 +55,9 @@
 
     {% endblock %}
 </div>
+{% block bottom %}
 
+{% endblock %}
 <!-- Page Footer -->
 <footer class="fixed-bottom card-footer ">
     <div>@2022 Python Web Basics Workshop at SoftUni</div>

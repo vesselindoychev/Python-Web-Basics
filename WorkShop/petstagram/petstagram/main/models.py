@@ -3,7 +3,7 @@ import datetime
 from django.core.validators import MinLengthValidator
 from django.db import models
 
-from petstagram.main.custom_validators import validate_only_letters, validate_file_max_size_in_mb
+from petstagram.main.custom_validators import validate_only_letters, ImageMaxSizeValidator
 
 
 class Profile(models.Model):
@@ -119,7 +119,7 @@ class Pet(models.Model):
 class PetPhoto(models.Model):
     photo = models.ImageField(
         validators=(
-            validate_file_max_size_in_mb,
+
         ),
     )
 
