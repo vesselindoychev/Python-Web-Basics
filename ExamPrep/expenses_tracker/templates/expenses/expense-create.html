@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <h1>Create Expense</h1>
+    <!-- Create Expense Form -->
+    <div class="form">
+        <form method="post" action="{% url 'create expense view' %}">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Create">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Your Profile Data -->
+    <h1>Your Profile</h1>
+    <div class="expenses-container">
+        <div class="expense-container">
+
+            <h2>{{ profile.get_full_name }}</h2>
+
+            {% if profile.image %}
+                <img src="{{ profile.image.url }}" alt="profile pic">
+            {% else %}
+                <img src="{% static 'images/user.png' %}" alt="profile pic">
+            {% endif %}
+{#            <img src="{{ profile.image.url }}" alt="profile pic">#}
+
+            <p>Total Items Bought: {{ items }}</p>
+            <!-- Budget Left -->
+            <p>Budget Left: {{ money_left|floatformat:2 }}$</p>
+            <div class="right">
+
+                <a class="button edit" href="{% url 'edit profile page' %}">Edit Profile</a>
+                <a class="button delete" href="{% url 'delete profile page' %}">Delete Profile</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
