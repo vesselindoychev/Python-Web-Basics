@@ -1,5 +1,7 @@
 from django.urls import path
 
-urlpatterns = [
+from petstagram.accounts.views import UserLoginView
 
+urlpatterns = [
+    path('login/', UserLoginView.as_view(), name='login'),
 ]

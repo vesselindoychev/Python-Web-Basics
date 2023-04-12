@@ -31,7 +31,7 @@
                             <!-- First 30 chars from the description -->
                             <p class="card-text">{{ pet_photo.description|truncatechars:30 }}</p>
                             <!-- Button to the Photo Details Page -->
-                            <a href="{% url 'pet-photo-details' pet_photo.id %}" class="btn btn-primary">See details</a>
+                            <a href="{% url 'pet-photo-details' pet_photo.pk %}" class="btn btn-primary">See details</a>
                         </div>
                     </div>
                 {% endfor %}

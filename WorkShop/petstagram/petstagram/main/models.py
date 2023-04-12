@@ -1,9 +1,13 @@
 import datetime
 
+from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator
 from django.db import models
 
-from petstagram.main.custom_validators import validate_only_letters, ImageMaxSizeValidator
+from petstagram.accounts.models import PetstagramUser
+from petstagram.main.custom_validators import validate_only_letters
+
+UserModel = get_user_model()
 
 
 class Profile(models.Model):
@@ -63,6 +67,12 @@ class Profile(models.Model):
         blank=True,
     )
 
+    user = models.OneToOneField(
+        UserModel,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
@@ -100,8 +110,8 @@ class Pet(models.Model):
         blank=True,
     )
 
-    user_profile = models.ForeignKey(
-        Profile,
+    user = models.ForeignKey(
+        UserModel,
         on_delete=models.CASCADE,
     )
 
@@ -113,7 +123,7 @@ class Pet(models.Model):
         return f"{self.name} the {self.type}"
 
     class Meta:
-        unique_together = ('user_profile', 'name')
+        unique_together = ('user', 'name')
 
 
 class PetPhoto(models.Model):

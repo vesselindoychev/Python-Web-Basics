@@ -19,7 +19,7 @@ def show_profile(request):
         'total_pet_photos_likes': total_pet_photos_likes,
         'pets': pets,
     }
-    return render(request, 'profile_details.html', context)
+    return render(request, 'main/profile_details.html', context)
 
 
 def create_profile(request):
@@ -35,7 +35,7 @@ def create_profile(request):
     context = {
         'create_profile_form': create_profile_form,
     }
-    return render(request, 'profile_create.html', context)
+    return render(request, 'main/profile_create.html', context)
 
 
 def edit_profile(request):
@@ -52,7 +52,7 @@ def edit_profile(request):
         'edit_profile_form': edit_profile_form,
     }
 
-    return render(request, 'profile_edit.html', context)
+    return render(request, 'main/profile_edit.html', context)
 
 
 def delete_profile(request):
@@ -67,4 +67,4 @@ def delete_profile(request):
     context = {
         'delete_profile_form': delete_profile_form,
     }
-    return render(request, 'profile_delete.html', context)
+    return render(request, 'main/profile_delete.html', context)

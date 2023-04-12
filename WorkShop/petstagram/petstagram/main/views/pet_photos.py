@@ -1,22 +1,25 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views import generic as views
 
 from petstagram.main.forms.pet_photos import CreatePetPhotoForm, EditPetPhotoForm, DeletePetPhotoForm
-from petstagram.main.helpers import get_profile
-from petstagram.main.models import PetPhoto, Pet
+
+from petstagram.main.models import PetPhoto
 
 
-def create_pet_photo(request):
-    if request.method == 'POST':
-        form = CreatePetPhotoForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard')
-    else:
-        form = CreatePetPhotoForm(request.FILES)
-    context = {
-        'form': form,
-    }
-    return render(request, 'photo_create.html', context)
+class CreatePetPhotoView(views.CreateView):
+    form_class = CreatePetPhotoForm
+    template_name = 'main/photo_create.html'
+    success_url = reverse_lazy('dashboard')
+
+class EditPetPhotoView(views.UpdateView):
+    model = PetPhoto
+    form_class = EditPetPhotoForm
+    template_name = 'main/photo_edit.html'
+    success_url = reverse_lazy('pet-photo-details')
+
+    def get_success_url(self):
+        return reverse_lazy('pet photo details', kwargs={'pk': self.object.id})
 
 
 def edit_pet_photo(request, pk):
@@ -33,7 +36,7 @@ def edit_pet_photo(request, pk):
         'form': form,
         'pet_photo': pet_photo,
     }
-    return render(request, 'photo_edit.html', context)
+    return render(request, 'main/photo_edit.html', context)
 
 
 def delete_pet_photo(request, pk):
@@ -51,17 +54,16 @@ def delete_pet_photo(request, pk):
         'pet_photo': pet_photo,
     }
 
-    return render(request, 'photo_delete.html', context)
+    return render(request, 'main/photo_delete.html', context)
 
 
-def show_pet_photo_details(request, pk):
-    pet_photo = PetPhoto.objects.get(pk=pk)
+class PetPhotoDetailsView(views.DetailView):
+    model = PetPhoto
+    template_name = 'main/photo_details.html'
+    context_object_name = 'pet_photo'
 
-    context = {
-        'pet_photo': pet_photo,
-    }
-
-    return render(request, 'photo_details.html', context)
+    def get_queryset(self):
+        return super().get_queryset().prefetch_related('tagged_pets')
 
 
 def like_pet_photo(request, pk):
