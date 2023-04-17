@@ -1,11 +1,6 @@
 from django.contrib import admin
 
-from petstagram.main.models import Profile, Pet, PetPhoto
-
-
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
-    pass
+from petstagram.main.models import Pet, PetPhoto
 
 
 @admin.register(Pet)

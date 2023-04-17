@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load profiles %}
+
 {% block content %}
-   <div class="jumbotron">
+    <div class="jumbotron">
         <img style="width: 100%"
              src="https://activepets.co.za/web/ap-content/uploads/2019/08/Active-pets-dogs-and-cats.png" alt="">
         <div class="position-sticky">
@@ -14,7 +14,7 @@
                 <a href="{% url 'login' %}" class="btn btn-lg btn-secondary">Login</a>
 
                 <!-- Register Button -->
-                <a href="#" class="btn btn-lg btn-secondary">Register</a>
+                <a href="{% url 'register' %}" class="btn btn-lg btn-secondary">Register</a>
             </div>
         </div>
     </div>

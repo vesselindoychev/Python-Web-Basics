@@ -2,7 +2,7 @@ import datetime
 
 from django import forms
 
-from petstagram.main.helpers import BootstrapFormMixin, DisabledFieldsFormMixin
+from petstagram.common.helpers import BootstrapFormMixin, DisabledFieldsFormMixin
 from petstagram.main.models import Pet
 
 

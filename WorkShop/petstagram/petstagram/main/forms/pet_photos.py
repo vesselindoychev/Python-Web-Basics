@@ -1,6 +1,6 @@
 from django import forms
 
-from petstagram.main.helpers import BootstrapFormMixin
+from petstagram.common.helpers import BootstrapFormMixin
 from petstagram.main.models import PetPhoto
 
 
