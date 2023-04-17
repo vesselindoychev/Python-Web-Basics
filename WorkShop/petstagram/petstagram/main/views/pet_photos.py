@@ -43,6 +43,14 @@ class EditPetPhotoView(views.UpdateView):
 #     }
 #     return render(request, 'main/photo_edit.html', context)
 
+class DeletePetPhotoView(views.DeleteView):
+    model = PetPhoto
+    form_class = DeletePetPhotoForm
+    template_name = 'main/photo_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('dashboard')
+
 
 def delete_pet_photo(request, pk):
     pet_photo = PetPhoto.objects.get(pk=pk)

@@ -25,5 +25,9 @@ class EditPetView(views.UpdateView):
 
 
 class DeletePetView(views.DeleteView):
+    model = Pet
     form_class = DeletePetForm
     template_name = 'main/pet_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('show profile', kwargs={'pk': self.request.user.id})

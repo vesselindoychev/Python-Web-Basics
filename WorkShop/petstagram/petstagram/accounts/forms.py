@@ -126,6 +126,7 @@ class DeleteProfileForm(forms.ModelForm):
         pets = self.instance.pet_set.all()
         # should be done with signals
         PetPhoto.objects.filter(tagged_pets__in=pets).delete()
+        self.request.user.delete()
         self.instance.delete()
         return self.instance
 

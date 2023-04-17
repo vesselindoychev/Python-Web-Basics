@@ -2,7 +2,7 @@ from django.urls import path
 
 from petstagram.main.views.generic import HomeView, DashboardView
 from petstagram.main.views.pet_photos import like_pet_photo, \
-    delete_pet_photo, CreatePetPhotoView, PetPhotoDetailsView, EditPetPhotoView
+    delete_pet_photo, CreatePetPhotoView, PetPhotoDetailsView, EditPetPhotoView, DeletePetPhotoView
 from petstagram.main.views.pets import CreatePetView, EditPetView, DeletePetView
 
 
@@ -22,9 +22,8 @@ urlpatterns = [
 
     # Pet Photos
     path('photo/add/', CreatePetPhotoView.as_view(), name='create-pet-photo'),
-    # path('photo/edit/<int:pk>/', EditPetPhotoView.as_view(), name='edit-pet-photo'),
     path('photo/edit/<int:pk>/', EditPetPhotoView.as_view(), name='edit-pet-photo'),
-    path('photo/delete/<int:pk>/', delete_pet_photo, name='delete-pet-photo'),
+    path('photo/delete/<int:pk>/', DeletePetPhotoView.as_view(), name='delete-pet-photo'),
     path('photo/details/<int:pk>/', PetPhotoDetailsView.as_view(), name='pet-photo-details'),
     path('photo/like/<int:pk>/', like_pet_photo, name='like-pet-photo'),
 

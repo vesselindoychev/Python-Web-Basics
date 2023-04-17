@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
-from petstagram.accounts.forms import CreateProfileForm, EditProfileForm
+from petstagram.accounts.forms import CreateProfileForm, EditProfileForm, DeleteProfileForm
 from petstagram.accounts.models import Profile
 from petstagram.common.views_mixins import RedirectToDashboard
 from petstagram.main.models import Pet, PetPhoto
@@ -18,6 +18,7 @@ class UserRegisterView(RedirectToDashboard, views.CreateView):
         result = super().form_valid(form)
         login(self.request, self.object)
         return result
+
 
 class UserLoginView(auth_views.LoginView):
     template_name = 'accounts/login_page.html'
@@ -63,6 +64,16 @@ class ProfileDetailsView(views.DetailView):
         return context
 
 
+class DeleteProfileView(views.DeleteView):
+    model = Profile
+    form_class = DeleteProfileForm
+    template_name = 'accounts/profile_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('index')
+
+    def get_queryset(self):
+        return super().get_queryset()
 # def delete_profile(request):
 #     profile = get_profile()
 #     if request.method == 'POST':
